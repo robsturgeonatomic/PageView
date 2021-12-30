@@ -14,7 +14,7 @@ public struct HPageView<Pages>: View where Pages: View {
     public let pageControlAlignment: Alignment
     public let pageGestureType: PageGestureType
     
-    @StateObject var state: PageScrollState
+    @ObservedObject var state: PageScrollState
     @GestureState var stateTransaction: PageScrollState.TransactionInfo
     
     public init(
@@ -104,7 +104,7 @@ public struct HPageView<Pages>: View where Pages: View {
         // prevent values outside of 0...1
         let threshold = CGFloat(abs(pageSwitchThreshold) - floor(abs(pageSwitchThreshold)))
         let wrappedStateObj = PageScrollState(switchThreshold: threshold, selectedPageBinding: selectedPage)
-        self._state = StateObject(wrappedValue: wrappedStateObj)
+        self._state = ObservedObject(wrappedValue: wrappedStateObj)
         self._stateTransaction = wrappedStateObj.horizontalGestureState(pageCount: pageCount)
         self.theme = theme
         self.pages = pageContainer
@@ -164,7 +164,7 @@ public struct VPageView<Pages>: View where Pages: View {
     public let pageControlAlignment: Alignment
     public let pageGestureType: PageGestureType
     
-    @StateObject var state: PageScrollState
+    @ObservedObject var state: PageScrollState
     @GestureState var stateTransaction: PageScrollState.TransactionInfo
 
     public init(
@@ -254,7 +254,7 @@ public struct VPageView<Pages>: View where Pages: View {
         // prevent values outside of 0...1
         let threshold = CGFloat(abs(pageSwitchThreshold) - floor(abs(pageSwitchThreshold)))
         let wrappedStateObj = PageScrollState(switchThreshold: threshold, selectedPageBinding: selectedPage)
-        self._state = StateObject(wrappedValue: wrappedStateObj)
+        self._state = ObservedObject(wrappedValue: wrappedStateObj)
         self._stateTransaction = wrappedStateObj.verticalGestureState(pageCount: pageCount)
         self.theme = theme
         self.pages = pageContainer

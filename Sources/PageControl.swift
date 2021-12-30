@@ -37,7 +37,7 @@ public enum PageControl {
                 bodyCreator(pageCount, $selectedPage, theme)
             }
                 .modifier(Background(theme: theme))
-                .offset(x: 0.0, y: theme.yOffset)
+                .offset(x: theme.xOffset, y: theme.yOffset)
                 .opacity(theme.opacity)
         }
     }
@@ -55,7 +55,7 @@ public enum PageControl {
                 bodyCreator(pageCount, $selectedPage, theme)
             }
                 .modifier(Background(theme: theme))
-                .offset(x: theme.xOffset, y: 0.0)
+                .offset(x: theme.xOffset, y: theme.yOffset)
                 .opacity(theme.opacity)
         }
     }
